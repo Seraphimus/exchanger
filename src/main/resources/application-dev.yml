@@ -1,6 +1,7 @@
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+    enabled: true
 spring:
   h2:
     console:
