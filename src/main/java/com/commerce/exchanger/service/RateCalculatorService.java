@@ -28,11 +28,13 @@ public class RateCalculatorService {
   }
 
   private BigDecimal calculateBaseToForeign(Calculation calculation, BigDecimal rate) {
-    return calculation.getAmount().setScale(2, RoundingMode.HALF_UP)
-        .divide(rate, RoundingMode.HALF_UP);
+    return calculation.getAmount().setScale(4, RoundingMode.HALF_UP)
+        .divide(rate, RoundingMode.HALF_UP)
+        .setScale(4, RoundingMode.HALF_UP);
   }
 
   private BigDecimal calculateForeignToBase(Calculation calculation, BigDecimal rate) {
-    return calculation.getAmount().setScale(2, RoundingMode.HALF_UP).multiply(rate);
+    return calculation.getAmount().setScale(4, RoundingMode.HALF_UP).multiply(rate)
+        .setScale(2, RoundingMode.HALF_UP);
   }
 }

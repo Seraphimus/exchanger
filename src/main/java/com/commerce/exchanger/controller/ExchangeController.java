@@ -2,6 +2,7 @@ package com.commerce.exchanger.controller;
 
 import com.commerce.exchanger.dto.ExchangeDto;
 import com.commerce.exchanger.service.ExchangeService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ public class ExchangeController {
   }
 
   @PostMapping
-  public void exchangeAmount(@RequestBody ExchangeDto exchangeDto) {
+  public void exchangeAmount(@Validated @RequestBody ExchangeDto exchangeDto) {
     exchangeService.exchange(exchangeDto);
   }
 }
