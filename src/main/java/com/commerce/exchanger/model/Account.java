@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(indexes = {@Index(name = "userCurrencyIndex", columnList = "uuid, currency")})
+@Table(indexes = {@Index(name = "userCurrencyIndex", columnList = "user, currency")})
 @Getter
 @Setter
 public class Account {
@@ -19,5 +19,5 @@ public class Account {
   UUID uuid;
   String currency;
   BigDecimal balance;
-
+  UUID user;
 }

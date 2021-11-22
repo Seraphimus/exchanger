@@ -24,7 +24,7 @@ public class UserController {
 
   @GetMapping("/{userUuid}")
   public UserDto getUser(@PathVariable UUID userUuid) {
-    return userService.getAccount(userUuid);
+    return userService.getUserDto(userUuid);
   }
 
   @PostMapping

@@ -1,5 +1,7 @@
 package com.commerce.exchanger.model;
 
+import static javax.persistence.CascadeType.ALL;
+
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
@@ -18,6 +20,6 @@ public class User {
   String firstName;
   String lastName;
 
-  @OneToMany
+  @OneToMany(cascade=ALL, mappedBy="user")
   List<Account> accounts;
 }

@@ -43,7 +43,7 @@ class UserServiceTests {
   void shouldCreateAccount() {
     ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
     Account testAccount = createTestAccount(BigDecimal.valueOf(10L));
-    when(accountService.createInitialAccount(any())).thenReturn(testAccount);
+    when(accountService.createInitialAccount(any(), any())).thenReturn(testAccount);
     when(userRepository.save(userCaptor.capture())).thenReturn(new User());
 
     AccountInitDto dto = AccountInitDto.builder()
@@ -66,7 +66,7 @@ class UserServiceTests {
     UUID uuid = UUID.randomUUID();
     when(userRepository.findById(uuid)).thenReturn(Optional.of(createTestUser(uuid)));
 
-    UserDto userDto = userService.getAccount(uuid);
+    UserDto userDto = userService.getUserDto(uuid);
 
     Assertions.assertThat(userDto).isNotNull();
     Assertions.assertThat(userDto.getFirstName()).isEqualTo("Test1");
@@ -78,7 +78,7 @@ class UserServiceTests {
     UUID uuid = UUID.randomUUID();
     when(userRepository.findById(uuid)).thenReturn(null);
 
-    UserDto userDto = userService.getAccount(UUID.randomUUID());
+    UserDto userDto = userService.getUserDto(UUID.randomUUID());
 
     Assertions.assertThat(userDto).isNull();
   }
