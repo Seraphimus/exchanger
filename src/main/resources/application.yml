@@ -11,3 +11,6 @@ exchanger:
   rate:
     api:
       url: "https://api.nbp.pl/api/exchangerates/rates/c"
+spring:
+  liquibase:
+    enabled: false

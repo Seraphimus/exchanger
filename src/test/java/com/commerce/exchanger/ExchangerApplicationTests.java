@@ -1,7 +1,7 @@
 package com.commerce.exchanger;
 
-import com.commerce.exchanger.controller.ExchangeController;
-import com.commerce.exchanger.controller.UserController;
+import com.commerce.exchanger.api.ClientEndpoint;
+import com.commerce.exchanger.api.ExchangeEndpoint;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +11,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ExchangerApplicationTests {
 
   @Autowired
-  private ExchangeController exchangeController;
+  private ExchangeEndpoint exchangeEndpoint;
 
   @Autowired
-  UserController userController;
+  ClientEndpoint clientEndpoint;
 
   @Test
   void contextLoads() {
-    Assertions.assertThat(exchangeController).isNotNull();
-    Assertions.assertThat(userController).isNotNull();
+    Assertions.assertThat(exchangeEndpoint).isNotNull();
+    Assertions.assertThat(clientEndpoint).isNotNull();
   }
 
 }
