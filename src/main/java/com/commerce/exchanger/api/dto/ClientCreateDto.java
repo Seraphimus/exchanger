@@ -9,7 +9,7 @@ import lombok.Value;
 
 @Value
 @Builder
-public class AccountCreateDto {
+public class ClientCreateDto {
   @NotBlank
   String firstName;
   @NotBlank

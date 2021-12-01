@@ -1,6 +1,6 @@
 package com.commerce.exchanger.domain;
 
-import com.commerce.exchanger.app.exception.ExchangeErrorException;
+import com.commerce.exchanger.app.exception.ExchangerGeneralException;
 import lombok.Value;
 
 @Value
@@ -16,7 +16,7 @@ public class CurrencyPair {
 
   public static CurrencyPair of(String fromCurrency, String toCurrency) {
     if(fromCurrency.equalsIgnoreCase(toCurrency)) {
-      throw new ExchangeErrorException("Invalid currency combination");
+      throw new ExchangerGeneralException("Invalid currency combination");
     }
     return new CurrencyPair(fromCurrency, toCurrency);
   }

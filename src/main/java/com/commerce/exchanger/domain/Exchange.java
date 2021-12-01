@@ -1,6 +1,6 @@
 package com.commerce.exchanger.domain;
 
-import com.commerce.exchanger.app.exception.ExchangeErrorException;
+import com.commerce.exchanger.app.exception.ExchangerGeneralException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import lombok.AccessLevel;
@@ -25,10 +25,10 @@ public class Exchange {
 
   public Client performExchangeForClientWithRate(Client client, Rate rate) {
     if (client == null) {
-      throw new ExchangeErrorException("Client unknown");
+      throw new ExchangerGeneralException("Client unknown");
     }
-    if (client.cannotExchange(pair.getFromCurrency(), amount)) {
-      throw new ExchangeErrorException("Insufficient funds");
+    if (!client.canExchange(pair.getFromCurrency(), amount)) {
+      throw new ExchangerGeneralException("Insufficient funds");
     }
     client.performExchange(pair, amount, calculateExchangedAmount(amount, rate));
     return client;

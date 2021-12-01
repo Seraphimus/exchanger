@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 @NoArgsConstructor
-public class ExchangeErrorException extends RuntimeException {
+public class ExchangerGeneralException extends RuntimeException {
 
-  public ExchangeErrorException(String message) {
+  public ExchangerGeneralException(String message) {
     super(message);
   }
 }

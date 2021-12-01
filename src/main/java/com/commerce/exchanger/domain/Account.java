@@ -13,21 +13,7 @@ public class Account implements Serializable {
   String currency;
   BigDecimal balance;
 
-  public static Account createBaseCurrencyAccount(BigDecimal balance) {
-    return Account.builder()
-        .currency("PLN")
-        .balance(balance)
-        .build();
-  }
-
-  public static Account createForeignCurrencyAccount(String currency, BigDecimal balance) {
-    return Account.builder()
-        .currency(currency)
-        .balance(balance)
-        .build();
-  }
-
-  public static Account readAccountData(String currency, BigDecimal balance) {
+  public static Account buildCurrencyAccount(String currency, BigDecimal balance) {
     return Account.builder()
         .currency(currency)
         .balance(balance)

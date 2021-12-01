@@ -4,6 +4,7 @@ import static javax.persistence.CascadeType.ALL;
 
 import com.commerce.exchanger.domain.Account;
 import com.commerce.exchanger.domain.Client;
+import com.commerce.exchanger.domain.ClientIdentifier;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -44,14 +45,12 @@ public class ClientDao implements Serializable {
   }
 
   public static Client mapToDomain(ClientDao clientDao) {
+    ClientIdentifier identifier = ClientIdentifierMapper.mapToDomain(clientDao.uuid);
     Map<String, Account> accountMap = clientDao.accounts.stream()
         .map(AccountDao::mapToDomain)
         .collect(Collectors.toMap(Account::getCurrency, account -> account));
-    return Client.builder()
-        .identifier(ClientIdentifierMapper.mapToDomain(clientDao.uuid))
-        .firstName(clientDao.firstName)
-        .lastName(clientDao.lastName)
-        .accounts(accountMap)
-        .build();
+
+    return Client.buildExistingClient(identifier, clientDao.firstName, clientDao.lastName,
+        accountMap);
   }
 }

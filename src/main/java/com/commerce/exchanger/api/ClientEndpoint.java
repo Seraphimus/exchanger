@@ -1,7 +1,7 @@
 package com.commerce.exchanger.api;
 
 
-import com.commerce.exchanger.api.dto.AccountCreateDto;
+import com.commerce.exchanger.api.dto.ClientCreateDto;
 import com.commerce.exchanger.api.dto.ClientDto;
 import com.commerce.exchanger.app.ClientService;
 import java.util.UUID;
@@ -29,11 +29,11 @@ public class ClientEndpoint {
   }
 
   @PostMapping
-  public void createUser(@Validated @RequestBody AccountCreateDto accountCreateDto) {
-    clientService.buildClient(
-        accountCreateDto.getFirstName(),
-        accountCreateDto.getLastName(),
-        accountCreateDto.getInitialBalance()
+  public void createClient(@Validated @RequestBody ClientCreateDto clientCreateDto) {
+    clientService.createClient(
+        clientCreateDto.getFirstName(),
+        clientCreateDto.getLastName(),
+        clientCreateDto.getInitialBalance()
     );
   }
 }

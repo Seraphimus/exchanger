@@ -46,7 +46,7 @@ public class AccountDao implements Serializable {
   }
 
   public static Account mapToDomain(AccountDao accountDao) {
-    return Account.readAccountData(accountDao.currency, accountDao.balance);
+    return Account.buildCurrencyAccount(accountDao.currency, accountDao.balance);
   }
 
   public static List<Account> mapToDomain(Collection<AccountDao> accountDaos) {
